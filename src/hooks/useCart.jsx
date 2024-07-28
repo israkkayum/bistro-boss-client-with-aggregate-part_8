@@ -12,7 +12,8 @@ const useCart = () => {
         queryFn: async() => {
             const res = await axiosSecure.get(`/carts?email=${user.email}`);
             return res.data;
-        }
+        },
+        enabled: !!user?.email, // Only enable this query if user.email exists
     })
 
     return [cart, refetch]
